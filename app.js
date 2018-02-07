@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var manage = require('./routes/manage');
+var ctg = require('./routes/ctg');
 
 var app = express();
 mongoose.connect('mongodb://localhost:27017/shopping',{useMongoClient:true},function(err){
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/manage', manage);
+app.use('/ctg', ctg);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
