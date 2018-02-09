@@ -34,18 +34,6 @@ router.get("/:ctg/add/:id",function(req,res,next){
      res.redirect('/gio-hang');
   })
 
-  // console.log(ctg);
-  // if(!req.session.product){
-  //   req.session.product=[];
-  // }
-  // if(req.session.product.indexOf(id)==-1){
-  //   req.session.product.push(id);
-  // }
-  // console.log(req.session.product);
-  
-  // product.find({},function(err,result){
-  //   res.render("cart",{ssProduct:req.session.product,data:result});
-  // });
 })
 router.get("/update/:id/:sl",function(req,res,next){
   id=req.params.id;
