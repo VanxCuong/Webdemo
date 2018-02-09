@@ -39,7 +39,7 @@ router.post('/product',upload, function(req, res, next) {
         res.send("Bạn Chưa UpLoad Ảnh");
     }else{
         var InsertProduct=new product({
-            name:  req.body.name,
+            namePd:  req.body.name,
             price: req.body.price,
             image: req.file.path,
             description: req.body.description,

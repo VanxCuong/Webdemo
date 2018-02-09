@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({secret: 'quoctuan', resave: false, saveUninitialized: false,cookie: { maxAge: 180 * 60 * 1000 }}));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/public', express.static('public'))
 app.use('/', index);
 app.use('/users', users);
 app.use('/manage', manage);

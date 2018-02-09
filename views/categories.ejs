@@ -35,22 +35,24 @@
         <div class="col-md-9 col-sm-8 content">
           <div class="row">
             <div class="col-md-12">                
-              <h3 style="margin: 0px">Pants</h3>
+              <h3 style="margin: 0px"><%= danhmuc%></h3>
               <hr />
 
               <!-- begind:item -->
               <div class="row product-container">
               <% data.forEach(function(item){ %>
+                <% if(item.category_id!=null){ %>
                 <div class="col-md-4 col-sm-4 col-xs-6">
                   <div class="thumbnail product-item">
-                    <a href="product_detail.html"><img alt="" src="/images/product1.jpg"></a>
+                    <a href="<%=item.category_id.name%>/<%= item._id %>"><img alt="" src="../<%=item.image%>"></a>
                     <div class="caption">
-                      <h5>Casual Rock Pants</h5>
-                      <p>$54.00</p>
+                      <h5><%=item.namePd%></h5>
+                      <p><%= format(item.price) %> VNĐ</p>
                     </div>
                     <div class="product-item-badge">New</div>
                   </div>
                 </div>
+                <%}%>
                 <% }) %>
               </div>
               <!-- end:item -->

@@ -36,7 +36,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="heading-title">
-                <h2 style="margin: 0px">The <span>Product title</span> <span class="text-yellow">.</span></h2>
+                <h2 style="margin: 0px"><span><%= data.namePd%></span> <span class="text-yellow">.</span></h2>
               </div>
               <div class="row">
                 <!-- begin:product-image-slider -->
@@ -45,7 +45,7 @@
                     <div class="carousel-inner">
                       <div class="item active">
                         <div class="product-single">
-                          <img src="/images/product1.jpg" class="img-responsive">
+                          <img src="../../<%= data.image%>" class="img-responsive">
                         </div>
                       </div>
                     </div>
@@ -71,7 +71,7 @@
                           <tr class="hidden-xs">
                               <td><strong>Product Code</strong></td>
                               <td>:</td>
-                              <td>AF0012</td>
+                              <td><%= data._id%></td>
                           </tr>
                           <tr class="hidden-xs">
                               <td><strong>Availability</strong></td>
@@ -79,11 +79,11 @@
                               <td>In Stock</td>
                           </tr>
                           <tr>
-                              <td colspan="3"><span class="price">$21.42</span></td>
+                              <td colspan="3"><span class="price"><%= format(data.price) %> VNĐ</span></td>
                           </tr>
                           <tr>
                               <td colspan="3">
-                                <a href="#" class="btn btn-sm btn-primary">Add to Cart</a>
+                                <a href="<%=base_url %>ctg/<%= ctg%>/add/<%= data._id%>" class="btn btn-sm btn-primary">Add to Cart</a>
                               </td>  
                           </tr>
                         </tbody>
@@ -123,42 +123,22 @@
                   </div>
 
                   <div class="row product-container" style="position: relative; height: 463.75px;">
+                    <% dem=1; %>
+                  <% kq.forEach(function(item){ %>
+                    <% if(item.category_id!=null && dem <= 4 &&  item._id != data._id){ %>
+                      <% dem++;%>
                     <div class="col-md-3 col-sm-6 col-xs-6">
-                      <div class="thumbnail product-item">
-                        <a href="product_detail.html"><img alt="" src="/images/product1.jpg"></a>
-                        <div class="caption">
-                          <h5>Pants</h5>
-                          <p>$54.00</p>
-                        </div>
-                      </div>
+                        <div class="thumbnail product-item">
+                            <a href="<%=base_url%>ctg/<%=item.category_id.name%>/<%= item._id %>"><img alt="" src="../../<%=item.image%>"></a>
+                            <div class="caption">
+                              <h5><%=item.namePd%></h5>
+                              <p><%= format(item.price) %> VNĐ</p>
+                            </div>
+                            <div class="product-item-badge">New</div>
+                          </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                      <div class="thumbnail product-item">
-                        <a href="product_detail.html"><img alt="" src="/images/product2.jpg"></a>
-                        <div class="caption">
-                          <h5>Pants</h5>
-                          <p>$54.00</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                      <div class="thumbnail product-item">
-                        <a href="product_detail.html"><img alt="" src="/images/product3.jpg"></a>
-                        <div class="caption">
-                          <h5>Pants</h5>
-                          <p>$54.00</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                      <div class="thumbnail product-item">
-                        <a href="product_detail.html"><img alt="" src="/images/product4.jpg"></a>
-                        <div class="caption">
-                          <h5>Pants</h5>
-                          <p>$54.00</p>
-                        </div>
-                      </div>
-                    </div>
+                    <%}%>
+                  <%})%> 
                   </div>
                 </div>
               </div>

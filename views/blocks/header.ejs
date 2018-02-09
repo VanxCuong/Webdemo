@@ -16,6 +16,13 @@
     <!-- Custom styles for this template -->
     <link href="/stylesheets/style.css" rel="stylesheet">
     <link href="/stylesheets/responsive.css" rel="stylesheet">
+    <%
+    format=function(money){
+        money=money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g,"$1.");
+        return money;
+    }
+    base_url="http://localhost:3000/";
+    %>
   </head>
 
   <body>

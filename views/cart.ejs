@@ -43,41 +43,38 @@
                   <th>Product</th>
                   <th>Description</th>
                   <th>Qty</th>
-                  <th>Price</th>
-                  <th>Total</th>
+                  <th>Price(VNĐ)</th>
+                  <th>Total(VNĐ)</th>
                 </tr>
                </thead>
                <tbody>
-                <tr>
-                  <td><img src="/images/product1.jpg" class="img-cart" /></td>
-                  <td><strong>BlackBox</strong></td>
-                  <td>
-                    <form class="form-inline">
-                      <input class="form-control" type="text" value="1" />
-                      <a href="#" class="btn btn-primary" rel="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
-                    </form>
-                  </td>
-                  <td>$54.00</td>
-                  <td>$54.00</td>
-                </tr>
-                <tr>
-                  <td><img src="/images/product2.jpg" class="img-cart" /></td>
-                  <td><strong>JunkShirt</strong></td>
-                  <td>
-                    <form class="form-inline">
-                      <input class="form-control" type="text" value="2" />
-                      <a href="#" class="btn btn-primary" rel="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
-                    </form>
-                  </td>
-                  <td>$16.00</td>
-                  <td>$32.00</td>
-                </tr>
+                 <% var sumToTal=0; %>
+              <% if(data){ %>
+                <% data.forEach(function(val,key){ %>
+                    <tr>
+                      <td><img src="../../<%= val.item.image%>" class="img-cart" /></td>
+                      <td><strong><%= val.item.namePd%></strong></td>
+                      <td>
+                        <form class="form-inline">
+                          <input class="form-control" idsp="<%= val.item._id%>" name="txtQuantity" type="number" value="<%= val.soluong%>" />
+                          <a href="/ctg/session/delete/<%= val.item._id%>" class="btn btn-primary" rel="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
+                        </form>
+                      </td>
+                      <td class="txtPrice" gt=""><%= format(val.item.price)%></td>
+                      <% var total=val.item.price*val.soluong%>
+                      <td class="txtTotal"><%= format(total)%></td>
+                    </tr>
+                    <%  sumToTal += total %>
+                <%})%>
+              <%}else{%>
+                <h3>Bạn Chưa có hàng nào</h3>
+                <%}%>
                 <tr>
                   <td colspan="6">&nbsp;</td>
                 </tr>
                 <tr>
                   <td colspan="4" class="text-right"><strong>Total</strong></td>
-                  <td>$88.00</td>
+                  <td class="txtSumTotal"><%= data?format(sumToTal):0%> VNĐ</td>
                 </tr>
                </tbody>
               </table>
