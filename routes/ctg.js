@@ -6,8 +6,11 @@ var Giohang=require("../models/giohang");
 /* GET home page. */
 router.get('/:id', function(req, res, next) {
   var ctg=req.params.id;
-  product.find({}).populate({path:"category_id",match: { name: ctg},select:"name"}).then(function(result){
-    res.render("categories",{data:result,danhmuc:ctg});
+  // product.find({}).populate({path:"category_id",match: { name: ctg},select:"name"}).then(function(result){
+  //   res.render("categories",{data:result,danhmuc:ctg});
+  // })
+  product.find({}).populate({path:"category_id",select:"name",match:{name:ctg}}).then(function(data){
+    res.send(data);
   })
 
 });
